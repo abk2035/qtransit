@@ -1,0 +1,521 @@
+You are a Senior Product Designer specialized in Enterprise SaaS, ERP systems, and Logistics platforms.
+
+Your mission is to design the complete Design System for a modern SaaS ERP named QTransit.
+
+## Product Overview
+
+QTransit is a cloud-native ERP platform for intercity transportation companies.
+
+The platform manages the complete business of a transportation company, including:
+
+• Transport Operations
+• Fleet Management
+• Routes
+• Trips
+• Ticketing
+• Seat Reservation
+• Customers
+• Agencies
+• Drivers
+• Controllers
+• Packages
+• Finance
+• Inventory
+• Procurement
+• Human Resources
+• Reports
+• Dashboards
+
+The ERP will be used every day by directors, accountants, cashiers, dispatchers, operations managers, warehouse managers, HR staff, drivers, controllers, and mechanics.
+
+The UI must support heavy daily usage with many tables, forms, dashboards, and workflows.
+
+The product must feel enterprise-grade and premium.
+
+Avoid startup-style interfaces.
+
+The experience should prioritize speed, readability, clarity, and efficiency.
+
+------------------------------------------------
+
+## Design Inspiration
+
+The visual quality should be comparable to:
+
+• Linear
+• Stripe Dashboard
+• Vercel Dashboard
+• Motive
+• Samsara
+• Fleetio
+• Uber Freight
+• Oracle Transportation Management
+• SAP Fiori
+• Atlassian Admin
+• Notion
+
+Never copy them.
+
+Only use them as inspiration.
+
+------------------------------------------------
+
+## Design Principles
+
+Modern Enterprise SaaS
+
+Minimal
+
+Professional
+
+Elegant
+
+Data-first
+
+High information density
+
+Large whitespace
+
+Perfect alignment
+
+Responsive
+
+Accessible (WCAG AA)
+
+Dark Mode ready
+
+Keyboard friendly
+
+Consistent
+
+Reusable
+
+Component driven
+
+8px Grid System
+
+------------------------------------------------
+
+## Color Palette
+
+Primary
+
+#0F766E
+
+Primary Hover
+
+#115E59
+
+Primary Light
+
+#CCFBF1
+
+Accent
+
+#14B8A6
+
+Sidebar
+
+#0F172A
+
+Background
+
+#F8FAFC
+
+Surface
+
+#FFFFFF
+
+Border
+
+#E2E8F0
+
+Text Primary
+
+#0F172A
+
+Text Secondary
+
+#64748B
+
+Success
+
+#22C55E
+
+Warning
+
+#F59E0B
+
+Danger
+
+#EF4444
+
+Info
+
+#3B82F6
+
+------------------------------------------------
+
+## Typography
+
+Use Geist as the primary font.
+
+Font weights:
+
+Regular
+
+Medium
+
+SemiBold
+
+Bold
+
+Clear hierarchy.
+
+Large page titles.
+
+Readable tables.
+
+Readable forms.
+
+Readable dashboards.
+
+------------------------------------------------
+
+## Border Radius
+
+Cards
+
+16px
+
+Buttons
+
+12px
+
+Inputs
+
+12px
+
+Dialogs
+
+20px
+
+------------------------------------------------
+
+## Elevation
+
+Very subtle shadows.
+
+Almost flat.
+
+No heavy neumorphism.
+
+------------------------------------------------
+
+## Icons
+
+Use Lucide icons.
+
+Outline style.
+
+Consistent size.
+
+------------------------------------------------
+
+## Layout
+
+Desktop First
+
+Sidebar
+
+280px
+
+Collapsible
+
+Top Navigation
+
+72px
+
+Responsive
+
+Large content area
+
+Sticky Header
+
+Sticky Sidebar
+
+------------------------------------------------
+
+## Components
+
+Create a complete design system including:
+
+Buttons
+
+Primary
+
+Secondary
+
+Ghost
+
+Danger
+
+Icon Button
+
+Inputs
+
+Textarea
+
+Number
+
+Phone
+
+Password
+
+Search
+
+Date Picker
+
+Select
+
+Multi Select
+
+Checkbox
+
+Radio
+
+Switch
+
+Slider
+
+OTP Input
+
+Autocomplete
+
+Cards
+
+Statistic Card
+
+Information Card
+
+Summary Card
+
+Bus Card
+
+Trip Card
+
+Customer Card
+
+Charts Card
+
+Alerts Card
+
+Tables
+
+Enterprise Data Table
+
+Sorting
+
+Filtering
+
+Pagination
+
+Resizable Columns
+
+Sticky Header
+
+Bulk Actions
+
+Column Visibility
+
+Search
+
+Export
+
+Forms
+
+Single Column
+
+Two Columns
+
+Wizard Forms
+
+Validation States
+
+Dialogs
+
+Drawer
+
+Modal
+
+Confirmation Dialog
+
+Bottom Sheet
+
+Navigation
+
+Sidebar
+
+Breadcrumb
+
+Tabs
+
+Navigation Menu
+
+Dropdown Menu
+
+Pagination
+
+Badges
+
+Tags
+
+Timeline
+
+Accordion
+
+Tooltip
+
+Popover
+
+Toast
+
+Notification Center
+
+Avatar
+
+Progress
+
+Loading
+
+Empty States
+
+Skeletons
+
+Status Indicators
+
+File Upload
+
+QR Code Display
+
+Ticket Component
+
+Seat Map Component
+
+Calendar Component
+
+Trip Timeline
+
+Vehicle Status Card
+
+Maps Placeholder
+
+------------------------------------------------
+
+## Dashboard Components
+
+Revenue KPI
+
+Trips KPI
+
+Passengers KPI
+
+Fleet KPI
+
+Occupancy KPI
+
+Fuel KPI
+
+Maintenance KPI
+
+Recent Activities
+
+Recent Tickets
+
+Recent Payments
+
+Today's Departures
+
+Bus Status
+
+Alerts
+
+Charts
+
+------------------------------------------------
+
+## Data Visualization
+
+Use modern charts.
+
+Line Chart
+
+Area Chart
+
+Bar Chart
+
+Pie Chart
+
+Donut Chart
+
+Heat Map
+
+Progress Ring
+
+Trend Indicators
+
+------------------------------------------------
+
+## Motion
+
+Very subtle.
+
+Fast.
+
+200ms transitions.
+
+Smooth interactions.
+
+------------------------------------------------
+
+## Dark Mode
+
+Design every component for both Light and Dark mode.
+
+------------------------------------------------
+
+## Design Tokens
+
+Generate complete design tokens for:
+
+Colors
+
+Typography
+
+Spacing
+
+Radius
+
+Shadow
+
+Opacity
+
+Z-index
+
+Animation
+
+Breakpoints
+
+Grid
+
+------------------------------------------------
+
+## Deliverables
+
+Produce a scalable Enterprise Design System that can support more than 250 screens and thousands of UI states.
+
+The Design System must be optimized for React, Next.js, Tailwind CSS, shadcn/ui, and TypeScript.
+
+Every component must be reusable and consistent.
+
+This Design System will become the foundation for all future QTransit web screens.

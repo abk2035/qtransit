@@ -1,0 +1,1496 @@
+Nom du Projet : QTransit
+
+I-Vision globale du projet
+
+Construire un ERP SaaS moderne dédié aux compagnies de transport interurbain, avec un portail web pour l'administration et une application mobile destinée aux voyageurs.
+
+L'objectif n'est pas seulement de gérer les trajets, mais toute l'entreprise : exploitation, finances, logistique et relation client.
+
+Les utilisateurs
+Administration (Web React)
+Direction
+Comptables
+Caissiers
+Agents d'agence
+Gestionnaires de stock
+Acheteurs
+RH
+Responsables d'exploitation
+Administrateurs système
+Personnel terrain
+Chauffeurs
+Contrôleurs
+Mécaniciens
+
+À terme, certains pourraient avoir une application mobile dédiée.
+
+Clients (Application mobile)
+Création de compte
+Réservation de billets
+Paiement
+Téléchargement du billet (QR Code)
+Suivi du voyage
+Historique des voyages
+Notifications
+Les grands modules du système
+1. Core
+Authentification
+Gestion des utilisateurs
+Rôles et permissions
+Multi-agences
+Multi-compagnies (SaaS)
+Paramètres
+2. Exploitation Transport
+
+Le cœur du métier.
+
+Bus
+Chauffeurs
+Convoyeurs
+Agences
+Lignes
+Trajets
+Horaires
+Affectation des bus
+Affectation des chauffeurs
+Suivi des bus
+Maintenance
+3. Billetterie
+
+Le système doit gérer les ventes en ligne et en agence.
+
+En agence :
+
+Vente au guichet
+Impression du billet
+Encaissement
+
+En ligne :
+
+Réservation via l'application mobile
+Paiement
+Génération d'un QR Code
+Validation du billet avant embarquement
+4. Gestion des colis
+Dépôt
+Suivi
+Livraison
+Notifications
+5. Comptabilité
+Plan comptable
+Journaux
+Grand livre
+Balance
+Compte de résultat
+Bilan
+Écritures automatiques liées aux ventes et achats
+6. Trésorerie
+Caisse
+Banque
+Dépôts
+Retraits
+Virements
+Rapprochements bancaires
+7. Budget
+Budget annuel
+Budget par agence
+Budget carburant
+Comparaison Prévu / Réalisé
+8. Achats
+Demandes d'achat
+Bons de commande
+Fournisseurs
+Réception
+Factures
+9. Stock
+Pièces détachées
+Carburant
+Pneus
+Lubrifiants
+Consommables
+Inventaire
+10. Ressources humaines
+Employés
+Contrats
+Présences
+Congés
+Paie (évolutif)
+11. Reporting
+Chiffre d'affaires
+Rentabilité des lignes
+Rentabilité des agences
+Occupation des bus
+Dépenses carburant
+Dépenses maintenance
+Les applications
+1. ERP Web (React)
+
+Toute la gestion de l'entreprise.
+
+2. API Backend (FastAPI)
+
+Expose tous les services métier.
+
+3. Application mobile (Flutter)
+
+Pour les voyageurs :
+
+Réservation de billets
+Paiement
+Choix des places
+QR Code
+Historique
+Notifications
+Suivi du bus (selon les fonctionnalités disponibles)
+
+À terme, une seconde application mobile pourrait être développée pour les chauffeurs et contrôleurs.
+
+II-Fonctionnalites Globales du projet
+
+Pour un ERP comme **QTransit**, il est préférable de réfléchir en termes de **fonctionnalités métier** plutôt que seulement en modules. Les modules sont des regroupements, tandis que les fonctionnalités représentent tout ce que l'utilisateur peut réellement faire.
+
+---
+
+
+II- Fonctionnalités globales de QTransit
+
+## 1. Gestion du système (Core)
+
+### Authentification
+
+* Connexion
+* Déconnexion
+* Réinitialisation du mot de passe
+* Double authentification (2FA)
+* Gestion des sessions
+* Journal des connexions
+
+### Gestion des utilisateurs
+
+* Créer un utilisateur
+* Modifier un utilisateur
+* Désactiver un utilisateur
+* Réinitialiser le mot de passe
+* Affecter un utilisateur à une agence
+* Affecter un utilisateur à une compagnie
+
+### Gestion des rôles
+
+* Créer un rôle
+* Modifier un rôle
+* Supprimer un rôle
+* Attribution des permissions
+* Permissions par module
+* Permissions par action (Créer, Lire, Modifier, Supprimer, Valider...)
+
+### Multi-compagnies (SaaS)
+
+* Création d'une compagnie
+* Paramétrage de la compagnie
+* Isolation des données
+* Gestion des abonnements
+* Gestion des licences
+
+### Multi-agences
+
+* Création d'agences
+* Paramètres des agences
+* Horaires
+* Responsable d'agence
+
+### Paramètres généraux
+
+* Devise
+* Fuseau horaire
+* Taxes
+* Numérotation automatique
+* Paramètres des billets
+* Paramètres des notifications
+
+---
+
+# 2. Exploitation Transport
+
+## Gestion des bus
+
+* Création d'un bus
+* Mise à jour
+* Retrait
+* Affectation à une agence
+* Historique
+* Disponibilité
+* Documents administratifs
+* Assurance
+* Visite technique
+
+---
+
+## Gestion des chauffeurs
+
+* Création
+* Affectation
+* Disponibilité
+* Historique
+* Permis
+* Sanctions
+* Évaluations
+
+---
+
+## Gestion des convoyeurs
+
+* Création
+* Affectation
+* Disponibilité
+
+---
+
+## Gestion des lignes
+
+* Création
+* Modification
+* Désactivation
+* Calcul des distances
+* Tarification
+
+---
+
+## Gestion des trajets
+
+* Création
+* Modification
+* Annulation
+* Duplication
+* Planification
+* Affectation des bus
+* Affectation des chauffeurs
+* Affectation des convoyeurs
+
+---
+
+## Gestion des horaires
+
+* Définition des horaires
+* Calendrier
+* Répétition automatique
+* Gestion des exceptions
+
+---
+
+## Affectations
+
+* Affectation d'un bus
+* Affectation d'un chauffeur
+* Affectation d'un convoyeur
+* Vérification des conflits
+
+---
+
+## Maintenance
+
+* Planification
+* Maintenance préventive
+* Maintenance corrective
+* Pannes
+* Historique
+* Pièces utilisées
+* Coûts
+
+---
+
+## Suivi des bus
+
+* Position GPS
+* Dernière position
+* Historique
+* Temps de trajet
+* Retards
+* Alertes
+
+---
+
+# 3. Billetterie
+
+## Vente en agence
+
+* Recherche de trajet
+* Choix des places
+* Réservation
+* Vente
+* Impression du billet
+* Annulation
+* Remboursement
+* Réémission
+
+---
+
+## Vente en ligne
+
+* Recherche de trajet
+* Choix des sièges
+* Réservation
+* Paiement
+* Confirmation
+* Téléchargement PDF
+* QR Code
+
+---
+
+## Gestion des billets
+
+* Génération
+* Validation
+* Annulation
+* Historique
+* Scan QR Code
+
+---
+
+## Tarification
+
+* Tarifs par ligne
+* Tarifs saisonniers
+* Promotions
+* Réductions
+* Tarifs spéciaux
+
+---
+
+# 4. Gestion des colis
+
+## Dépôt
+
+* Création
+* Étiquetage
+* Encaissement
+
+---
+
+## Transport
+
+* Affectation au bus
+* Suivi
+* Notifications
+
+---
+
+## Livraison
+
+* Retrait
+* Signature
+* Confirmation
+
+---
+
+# 5. Comptabilité
+
+## Comptabilité générale
+
+* Plan comptable
+* Journaux
+* Écritures
+* Grand livre
+* Balance
+* Bilan
+* Compte de résultat
+
+---
+
+## Automatisation
+
+* Vente → écriture comptable
+* Achat → écriture
+* Paiement → écriture
+
+---
+
+# 6. Trésorerie
+
+## Caisse
+
+* Ouverture
+* Fermeture
+* Encaissements
+* Décaissements
+
+---
+
+## Banque
+
+* Comptes bancaires
+* Dépôts
+* Retraits
+* Virements
+* Rapprochements
+
+---
+
+# 7. Budget
+
+* Création
+* Validation
+* Révision
+* Comparaison Prévu/Réalisé
+* Alertes de dépassement
+
+---
+
+# 8. Achats
+
+## Fournisseurs
+
+* Création
+* Évaluation
+* Historique
+
+---
+
+## Processus d'achat
+
+* Demande d'achat
+* Validation
+* Bon de commande
+* Réception
+* Facture
+* Paiement
+
+---
+
+# 9. Stock
+
+## Gestion des articles
+
+* Création
+* Classification
+* Codes-barres
+* QR Codes
+
+---
+
+## Mouvements
+
+* Entrées
+* Sorties
+* Transferts
+* Inventaires
+* Ajustements
+
+---
+
+## Stock technique
+
+* Pièces détachées
+* Pneus
+* Carburant
+* Lubrifiants
+* Consommables
+
+---
+
+# 10. Ressources Humaines
+
+## Employés
+
+* Création
+* Contrats
+* Affectations
+* Documents
+
+---
+
+## Présences
+
+* Pointage
+* Absences
+* Retards
+
+---
+
+## Congés
+
+* Demandes
+* Validation
+* Soldes
+
+---
+
+## Paie (évolutif)
+
+* Bulletins
+* Primes
+* Déductions
+* Export comptable
+
+---
+
+# 11. Reporting
+
+## Rapports d'exploitation
+
+* Chiffre d'affaires
+* Nombre de voyages
+* Nombre de passagers
+* Taux d'occupation
+* Rentabilité des lignes
+* Rentabilité des agences
+* Rentabilité des bus
+* Ponctualité
+* Retards
+
+---
+
+## Rapports financiers
+
+* Recettes
+* Dépenses
+* Trésorerie
+* Résultat
+* Flux de trésorerie
+
+---
+
+## Rapports RH
+
+* Effectifs
+* Présences
+* Congés
+
+---
+
+## Rapports Stock
+
+* Valeur du stock
+* Consommation
+* Mouvements
+
+---
+
+# 12. Notifications
+
+* Email
+* SMS
+* Push mobile
+* WhatsApp (évolutif)
+* Notifications système
+* Alertes de maintenance
+* Alertes budgétaires
+* Alertes de retard
+* Confirmation de réservation
+* Confirmation de paiement
+
+---
+
+# 13. Tableau de bord
+
+* KPIs en temps réel
+* Ventes du jour
+* Voyages en cours
+* Bus disponibles
+* Occupation des bus
+* Alertes
+* Chiffre d'affaires
+* Trésorerie
+* Colis en transit
+* Dépenses carburant
+* Dépenses maintenance
+
+---
+
+# 14. Application mobile Voyageur
+
+* Création de compte
+* Connexion
+* Gestion du profil
+* Recherche de trajets
+* Réservation
+* Choix des sièges
+* Paiement
+* Téléchargement du billet
+* QR Code
+* Historique des voyages
+* Suivi du voyage
+* Notifications
+* Demande de remboursement
+* Support client
+* Avis et évaluations
+
+---
+
+# 15. Fonctionnalités transversales
+
+* Recherche globale
+* Filtres avancés
+* Tri des données
+* Export PDF
+* Export Excel
+* Impression
+* Historique des modifications (Audit Log)
+* Journal des activités
+* Gestion des pièces jointes
+* Commentaires internes
+* Workflow de validation
+* Numérotation automatique des documents
+* API REST
+* Documentation OpenAPI/Swagger
+* Webhooks
+* Sauvegarde et restauration
+* Gestion des fuseaux horaires
+* Internationalisation (multi-langues)
+* Multi-devises (évolutif)
+* Paramétrage des notifications
+* Gestion des préférences utilisateur
+
+---
+
+## Estimation de l'envergure
+
+En regroupant les fonctionnalités métier et transversales, **QTransit** représente environ :
+
+* **15 grands domaines fonctionnels**
+* **Plus de 70 sous-domaines**
+* **Environ 220 à 280 fonctionnalités métier**
+* **Près de 500 à 800 cas d'utilisation (Use Cases)** une fois les workflows détaillés (création, validation, annulation, approbation, etc.).
+
+
+
+III- Modele de donnees globales 
+
+
+Pour un projet comme **QTransit**, il est préférable de construire le modèle de données en plusieurs niveaux :
+
+1. **Niveau 1 : Modèle de données global (Domain Model)** → toutes les entités du système et leurs relations.
+2. **Niveau 2 : Modèle par module** → détails des tables de chaque domaine.
+3. **Niveau 3 : Modèle physique** → colonnes, types SQL, index, contraintes, clés étrangères.
+4. **Niveau 4 : Optimisations** → vues, matérialisations, partitionnement, etc.
+
+À ce stade, nous sommes au **niveau 1**.
+
+---
+
+# Modèle de données global de QTransit
+
+```
+                                   +----------------+
+                                   |   Company      |
+                                   +----------------+
+                                           |
+                                   1 ------ N
+                                           |
+                                   +----------------+
+                                   |    Agency      |
+                                   +----------------+
+                                           |
+        ---------------------------------------------------------------
+        |          |            |            |          |              |
+        |          |            |            |          |              |
+      Bus      Employee      CashDesk     Warehouse   Budget       Customer
+        |            |             |            |
+        |            |             |            |
+        |            |             |            |
+        -----------------------------
+                    |
+             Driver / Controller
+                    |
+                    |
+               Assignment
+                    |
+                    |
+                 Schedule
+                    |
+                    |
+                 Trip(Route)
+                    |
+               +------------+
+               |   Route    |
+               +------------+
+                    |
+          DepartureCity ---- ArrivalCity
+
+```
+
+Le domaine Transport est le cœur du système.
+
+---
+
+# Domaine Core
+
+```
+Company
+Agency
+User
+Role
+Permission
+UserRole
+RolePermission
+Settings
+AuditLog
+Notification
+```
+
+Relations
+
+```
+Company
+    |
+    +----< Agency
+
+Agency
+    |
+    +----< User
+
+User
+    |
+    +----< UserRole >---- Role
+
+Role
+    |
+    +----< RolePermission >---- Permission
+```
+
+---
+
+# Domaine Exploitation
+
+```
+Bus
+BusCategory
+BusSeat
+Driver
+Controller
+Mechanic
+Employee
+
+Route
+Station
+Trip
+Schedule
+
+BusAssignment
+DriverAssignment
+ControllerAssignment
+
+Maintenance
+MaintenanceType
+MaintenanceItem
+FuelConsumption
+Incident
+GPSPosition
+```
+
+Relations
+
+```
+Bus
+
+    1
+    |
+    | N
+BusSeat
+
+Route
+
+    |
+    | N
+Trip
+
+Trip
+    |
+    |1
+    |
+Schedule
+
+Trip
+    |
+    |1
+BusAssignment
+
+BusAssignment
+      |
+      |
+      +------ Bus
+
+DriverAssignment
+       |
+       +------ Driver
+
+ControllerAssignment
+       |
+       +------ Controller
+```
+
+---
+
+# Domaine Billetterie
+
+```
+Customer
+
+Reservation
+
+Ticket
+
+SeatReservation
+
+Payment
+
+TicketValidation
+
+Pricing
+
+Promotion
+```
+
+Relations
+
+```
+Customer
+
+    |
+    | N
+Reservation
+
+Reservation
+     |
+     | N
+Ticket
+
+Ticket
+     |
+     |1
+Trip
+
+Ticket
+     |
+     |1
+Seat
+
+Ticket
+     |
+     |1
+Payment
+
+Ticket
+     |
+     |N
+TicketValidation
+```
+
+---
+
+# Domaine Colis
+
+```
+Parcel
+ParcelTracking
+ParcelStatus
+ParcelPayment
+ParcelDelivery
+```
+
+```
+Customer
+
+    |
+    |N
+Parcel
+
+Parcel
+    |
+    |N
+ParcelTracking
+
+Parcel
+    |
+    |1
+Trip
+
+Parcel
+    |
+    |1
+Payment
+```
+
+---
+
+# Domaine Comptabilité
+
+```
+ChartAccount
+Journal
+
+AccountingEntry
+
+AccountingEntryLine
+
+FiscalYear
+
+AccountingPeriod
+```
+
+Relations
+
+```
+Journal
+
+    |
+    |N
+AccountingEntry
+
+AccountingEntry
+
+    |
+    |N
+AccountingEntryLine
+
+AccountingEntryLine
+
+    |
+    |1
+ChartAccount
+```
+
+---
+
+# Domaine Trésorerie
+
+```
+CashRegister
+
+CashMovement
+
+Bank
+
+BankAccount
+
+BankTransaction
+
+BankReconciliation
+```
+
+Relations
+
+```
+CashRegister
+
+    |
+    |N
+CashMovement
+
+Bank
+
+    |
+    |N
+BankAccount
+
+BankAccount
+
+    |
+    |N
+BankTransaction
+```
+
+---
+
+# Domaine Budget
+
+```
+Budget
+
+BudgetLine
+
+BudgetRevision
+
+BudgetExecution
+```
+
+```
+Budget
+
+   |
+   |N
+BudgetLine
+
+BudgetLine
+
+   |
+   |N
+BudgetExecution
+```
+
+---
+
+# Domaine Achats
+
+```
+Supplier
+
+PurchaseRequest
+
+PurchaseOrder
+
+PurchaseOrderItem
+
+GoodsReceipt
+
+SupplierInvoice
+```
+
+Relations
+
+```
+Supplier
+
+     |
+     |N
+PurchaseOrder
+
+PurchaseOrder
+
+      |
+      |N
+PurchaseOrderItem
+
+PurchaseOrder
+
+      |
+      |1
+GoodsReceipt
+
+GoodsReceipt
+
+      |
+      |1
+SupplierInvoice
+```
+
+---
+
+# Domaine Stock
+
+```
+Warehouse
+
+Product
+
+Category
+
+Stock
+
+StockMovement
+
+Inventory
+
+InventoryLine
+
+Unit
+```
+
+Relations
+
+```
+Warehouse
+
+      |
+      |N
+Stock
+
+Product
+
+      |
+      |N
+Stock
+
+Stock
+
+      |
+      |N
+StockMovement
+
+Inventory
+
+      |
+      |N
+InventoryLine
+```
+
+---
+
+# Domaine RH
+
+```
+Employee
+
+Department
+
+Position
+
+Contract
+
+Attendance
+
+Leave
+
+Payroll
+```
+
+Relations
+
+```
+Department
+
+      |
+      |N
+Employee
+
+Employee
+
+      |
+      |1
+Contract
+
+Employee
+
+      |
+      |N
+Attendance
+
+Employee
+
+      |
+      |N
+Leave
+```
+
+---
+
+# Domaine Notifications
+
+```
+Notification
+
+NotificationTemplate
+
+NotificationChannel
+
+PushToken
+```
+
+---
+
+# Domaine Documents
+
+```
+Attachment
+
+Document
+
+DocumentCategory
+```
+
+Toutes les pièces jointes (factures, contrats, permis, photos de bus, billets PDF, etc.) sont centralisées dans ce domaine.
+
+---
+
+# Domaine Reporting
+
+Ce domaine ne possède généralement pas de tables métier propres. Il s'appuie sur les données des autres modules via :
+
+* Vues SQL
+* Tables d'agrégation
+* Matérialisation des indicateurs
+* Entrepôt de données (optionnel)
+
+---
+
+# Entités transversales
+
+Ces entités sont référencées par presque tous les modules :
+
+```
+Company
+Agency
+User
+Employee
+Customer
+Notification
+Attachment
+AuditLog
+Payment
+Address
+Contact
+```
+
+---
+
+# Vue d'ensemble
+
+Au total, le modèle conceptuel de **QTransit** comprend environ :
+
+| Domaine             | Nombre estimé d'entités |
+| ------------------- | ----------------------: |
+| Core                |                      10 |
+| Exploitation        |                      18 |
+| Billetterie         |                      10 |
+| Colis               |                       8 |
+| Comptabilité        |                      12 |
+| Trésorerie          |                       8 |
+| Budget              |                       6 |
+| Achats              |                      10 |
+| Stock               |                      12 |
+| Ressources humaines |                      10 |
+| Notifications       |                       4 |
+| Documents           |                       3 |
+| **Total**           |       **≈ 110 entités** |
+
+Je recommande de partir sur ce modèle conceptuel avant toute implémentation. Il servira de base pour concevoir une architecture **DDD + Clean Architecture**, puis détailler chaque module en tables, contraintes, API et règles métier de manière cohérente.
+
+
+ 
+IV- Liste des fonctionnalites pour le MVP
+
+D'après la vision actuelle de **QTransit**, le MVP doit se concentrer sur le **cœur du métier** : permettre à une compagnie de transport de gérer ses bus, vendre des billets (en agence et en ligne) et assurer le départ des voyageurs. Les autres modules (comptabilité complète, RH, achats, budget, stock avancé...) pourront être ajoutés dans les versions suivantes. 
+
+# Fonctionnalités du MVP V1
+
+## 1. Core
+
+### Authentification
+
+* Connexion
+* Déconnexion
+* Réinitialisation du mot de passe
+* Gestion des sessions
+
+### Gestion des utilisateurs
+
+* Création d'utilisateurs
+* Modification
+* Désactivation
+* Affectation à une agence
+
+### Gestion des rôles
+
+* Administrateur
+* Responsable d'agence
+* Caissier
+* Agent d'exploitation
+* Contrôleur
+
+### Multi-agences
+
+* Création des agences
+* Gestion des informations d'agence
+
+### Paramètres
+
+* Informations de la compagnie
+* Logo
+* Devise
+* Fuseau horaire
+* Paramètres des billets
+
+---
+
+# 2. Gestion des clients
+
+* Création d'un client
+* Modification
+* Recherche
+* Historique des voyages
+* Gestion des contacts
+
+---
+
+# 3. Gestion des bus
+
+* Création d'un bus
+* Modification
+* Désactivation
+* Catégorie
+* Nombre de places
+* État (Disponible / Maintenance / En voyage)
+
+---
+
+# 4. Gestion des employés
+
+### Chauffeurs
+
+* Création
+* Affectation
+* Disponibilité
+
+### Contrôleurs
+
+* Création
+* Affectation
+
+---
+
+# 5. Gestion des lignes
+
+* Création d'une ligne
+* Ville de départ
+* Ville d'arrivée
+* Distance
+* Tarif de base
+* Durée estimée
+
+---
+
+# 6. Gestion des trajets
+
+* Création d'un trajet
+* Planification
+* Heure de départ
+* Heure d'arrivée estimée
+* Affectation du bus
+* Affectation du chauffeur
+* Affectation du contrôleur
+* Changement de statut :
+
+  * Planifié
+  * Embarquement
+  * En cours
+  * Arrivé
+  * Annulé
+
+---
+
+# 7. Gestion des sièges
+
+* Génération automatique des places
+* Visualisation du bus
+* Occupation en temps réel
+* Blocage des places
+
+---
+
+# 8. Billetterie (Agence)
+
+* Recherche d'un trajet
+* Sélection des sièges
+* Création d'une réservation
+* Vente du billet
+* Impression du billet
+* Génération du QR Code
+* Annulation avant départ
+
+---
+
+# 9. Billetterie (Application mobile)
+
+* Création de compte
+* Connexion
+* Recherche de trajets
+* Choix des sièges
+* Réservation
+* Paiement
+* Téléchargement du billet PDF
+* QR Code
+
+---
+
+# 10. Validation des billets
+
+* Scan du QR Code
+* Vérification du billet
+* Vérification du trajet
+* Vérification de la date
+* Vérification de la place
+* Marquer le billet comme utilisé
+
+---
+
+# 11. Paiements
+
+* Paiement en espèces (agence)
+* Paiement Mobile Money
+* Paiement carte bancaire (optionnel selon le contexte)
+* Historique des paiements
+* Génération des reçus
+
+---
+
+# 12. Tableau de bord
+
+* Nombre de trajets du jour
+* Nombre de passagers
+* Taux de remplissage
+* Chiffre d'affaires du jour
+* Nombre de billets vendus
+* Départs du jour
+
+---
+
+# 13. Rapports
+
+* Billets vendus
+* Chiffre d'affaires par agence
+* Chiffre d'affaires par ligne
+* Taux d'occupation des bus
+* Liste des trajets
+* Liste des passagers
+
+---
+
+# 14. Notifications
+
+* Confirmation de réservation
+* Confirmation de paiement
+* Rappel avant départ
+* Annulation d'un trajet
+
+---
+
+# 15. Journal d'audit
+
+* Connexions
+* Créations
+* Modifications
+* Suppressions
+* Validations des billets
+
+---
+
+# Fonctionnalités reportées (V2+)
+
+Les fonctionnalités suivantes sont prévues dans la vision globale mais peuvent être reportées sans remettre en cause le fonctionnement du produit :
+
+* Gestion des colis
+* Comptabilité complète
+* Trésorerie
+* Budget
+* Achats
+* Gestion de stock
+* Maintenance avancée
+* Ressources humaines
+* Géolocalisation GPS des bus
+* Application mobile Chauffeur
+* Application mobile Contrôleur
+* Programme de fidélité
+* Promotions
+* Tarification dynamique
+* API partenaires
+* Multi-compagnies SaaS
+* Tableaux de bord analytiques avancés
+
+## Périmètre recommandé du MVP
+
+Le MVP peut être organisé en **10 modules** :
+
+1. Core (authentification, utilisateurs, rôles)
+2. Agences
+3. Clients
+4. Bus
+5. Chauffeurs et contrôleurs
+6. Lignes et trajets
+7. Billetterie (guichet)
+8. Application mobile voyageurs
+9. Paiements
+10. Reporting opérationnel
+
+Ce périmètre permet à une compagnie de transport d'utiliser **QTransit en production** pour gérer ses départs, vendre des billets en agence et en ligne, contrôler l'embarquement avec QR Code et suivre son activité quotidienne, tout en laissant les modules ERP avancés pour les versions suivantes. Cette approche reste cohérente avec la vision globale du projet et les domaines fonctionnels déjà définis. 
+
+
+
