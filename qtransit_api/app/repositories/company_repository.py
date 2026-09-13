@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 
 from app.core.models import Company
 from app.repositories.base_repository import BaseRepository
-
+from app.schemas.company import CompanyCreateRequest
 
 class CompanyRepository(BaseRepository[Company]):
     def __init__(self, db: Session):

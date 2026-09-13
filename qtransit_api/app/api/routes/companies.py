@@ -1,18 +1,11 @@
 from fastapi import APIRouter, Depends
-from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
 from app.db.session import get_db
 from app.services.company_service import CompanyService
+from app.schemas.company import CompanyCreateRequest
 
 router = APIRouter(prefix="/companies", tags=["companies"])
-
-
-class CompanyCreateRequest(BaseModel):
-    name: str = Field(..., min_length=2, max_length=150)
-    slug: str = Field(..., min_length=2, max_length=100)
-    country: str | None = None
-    currency: str | None = None
 
 
 @router.get("", summary="Lister les entreprises")

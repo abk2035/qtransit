@@ -1,0 +1,147 @@
+{
+  "info": {
+    "_postman_id": "qtransit-rbac-collection",
+    "name": "QTransit RBAC",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login (get token)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"rbac_user@example.com\",\n  \"password\": \"password\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/auth/login",
+          "host": ["{{base_url}}"],
+          "path": ["auth","login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "var json = pm.response.json();",
+              "if (json && json.access_token) { pm.environment.set('token', json.access_token); }",
+              "pm.test('Got access token', function () { pm.expect(json.access_token).to.exist; });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Create Permission",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"company_id\": {{company_id}},\n  \"code\": \"can_view\",\n  \"name\": \"Can View\",\n  \"module_name\": \"core\",\n  \"action_name\": \"view\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/permissions",
+          "host": ["{{base_url}}"],
+          "path": ["permissions"]
+        }
+      }
+    },
+    {
+      "name": "Create Role",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"company_id\": {{company_id}},\n  \"name\": \"admin\",\n  \"description\": \"Administrator role\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/roles",
+          "host": ["{{base_url}}"],
+          "path": ["roles"]
+        }
+      }
+    },
+    {
+      "name": "Attach Permission to Role",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/roles/{{role_id}}/permissions?permission_id={{permission_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["roles","{{role_id}}","permissions"],
+          "query": [
+            { "key": "permission_id", "value": "{{permission_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"rbac_user@example.com\",\n  \"password\": \"password\",\n  \"first_name\": \"RBAC\",\n  \"last_name\": \"User\",\n  \"company_id\": {{company_id}}\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/users",
+          "host": ["{{base_url}}"],
+          "path": ["users"]
+        }
+      }
+    },
+    {
+      "name": "Assign Role to User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/users/{{user_id}}/roles?role_id={{role_id}}",
+          "host": ["{{base_url}}"],
+          "path": ["users","{{user_id}}","roles"],
+          "query": [
+            { "key": "role_id", "value": "{{role_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Secure Endpoint Check",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{base_url}}/secure",
+          "host": ["{{base_url}}"],
+          "path": ["secure"]
+        }
+      }
+    }
+  ]
+}
